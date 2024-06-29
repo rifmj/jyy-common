@@ -5,7 +5,7 @@
 import axios, { type AxiosRequestConfig } from "axios"
 
 export const apiClient = axios.create({
-  baseURL: process.env.API_BASE_URL,
+  baseURL: process.env.EXPO_PUBLIC_API_BASE_URL,
 })
 
 /**
