@@ -1,0 +1,7 @@
+./dependency-graph.svg
+docs
+node_modules
+data
+scripts
+.env
+.idea

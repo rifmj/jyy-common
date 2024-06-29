@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "target": "es2017",
+    "skipLibCheck": true
+  },
+  "exclude": ["dist", "scripts", "node_modules"]
+}

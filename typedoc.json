@@ -1,0 +1,18 @@
+{
+  "entryPoints": [
+    "./src/modules/address/index.ts",
+
+    "./src/modules/booking/index.ts",
+
+    "./src/modules/car/index.ts",
+
+    "./src/modules/carWash/index.ts",
+
+    "./src/modules/user/index.ts",
+
+    "./src/types/common.ts",
+    "./src/api-client.ts"
+  ],
+  "name": "JUU Core",
+  "includeVersion": true
+}
