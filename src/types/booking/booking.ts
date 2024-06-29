@@ -96,6 +96,11 @@ export interface Booking {
   createdAt: Date
 
   /**
+   * Стоимость бронирования
+   */
+  price: number
+
+  /**
    * Список идентификаторов услуг мойки автомобиля.
    */
   services: CarWashServiceId[]

@@ -5,7 +5,8 @@
     "outDir": "dist",
     "rootDir": "src",
     "target": "es2017",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "experimentalDecorators": true
   },
   "exclude": ["dist", "scripts", "node_modules"]
 }
