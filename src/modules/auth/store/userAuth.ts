@@ -7,7 +7,8 @@ import {
 } from "../../../types/user/auth"
 
 export class UserAuth implements IUserAuth {
-  accessToken?: AccessToken = "123" as AccessToken
+  // accessToken?: AccessToken = "123" as AccessToken
+  accessToken?: AccessToken
   phoneNumber?: string
   refreshToken?: RefreshToken
 
