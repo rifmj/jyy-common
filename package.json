@@ -7,6 +7,7 @@
   "types": "./src/types.d.ts",
   "dependencies": {
     "axios": "^1.7.2",
+    "debug": "^4.3.5",
     "swr": "^2.2.5",
     "tsyringe": "^4.8.0"
   },
@@ -15,7 +16,8 @@
     "deps-visualize": "npx depcruise src --include-only \"^src\" --output-type dot | dot -T svg > dependency-graph.svg",
     "deps-unused": "npx depcheck",
     "knip": "knip",
-    "typedoc": "npx typedoc"
+    "typedoc": "npx typedoc",
+    "postinstall": "npx patch-package"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-migrate": "^2.1.0",

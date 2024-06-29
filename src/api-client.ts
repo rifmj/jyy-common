@@ -2,11 +2,36 @@
  * @module API Client
  */
 
-import axios, { type AxiosRequestConfig } from "axios"
+import axios, { type AxiosError, type AxiosRequestConfig } from "axios"
+
+process.env.DEBUG = "*"
+// @ts-ignore
+process.env.DEBUG_COLORS = true
+
+const debug = require("debug")("http")
 
 export const apiClient = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_BASE_URL,
 })
+
+apiClient.interceptors.request.use(async function (config) {
+  debug(`request:${config.method}:${config.url}`, config)
+  return { ...config }
+})
+
+apiClient.interceptors.response.use(
+  async response => {
+    const config = response.config
+    debug(`response:${config.method}:${config.url}`, response)
+    return response
+  },
+  async (error: AxiosError) => {
+    const config = error.config
+    debug(`error:${config.method}:${config.url}`, error)
+
+    throw error
+  }
+)
 
 /**
  * Выполняет GET-запрос к указанному URL и возвращает данные ответа.
