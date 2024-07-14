@@ -1,6 +1,6 @@
 {
   "name": "@juu/common",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "./src/index.ts",
   "license": "MIT",
   "type": "module",
@@ -13,6 +13,7 @@
   },
   "scripts": {
     "script:import-kolesa": "tsx ./scripts/import-kolesa.ts",
+    "test:create_car": "tsx ./tests/create_car.ts",
     "deps-visualize": "npx depcruise src --include-only \"^src\" --output-type dot | dot -T svg > dependency-graph.svg",
     "deps-unused": "npx depcheck",
     "knip": "knip",

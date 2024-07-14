@@ -3,16 +3,21 @@
  */
 
 import axios, { type AxiosError, type AxiosRequestConfig } from "axios"
+import dbg from "debug"
 
 process.env.DEBUG = "*"
 // @ts-ignore
 process.env.DEBUG_COLORS = true
 
-const debug = require("debug")("http")
+// const debug = require("debug")("http")
+// const debug = require("debug")("http")
+const debug = dbg("http")
 
 export const apiClient = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_BASE_URL,
 })
+
+apiClient.defaults.headers.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMzc2OTk1LCJpYXQiOjE3MjA3ODQ5OTUsImp0aSI6IjU0M2RmZDgyYzg1ZDQ4YjZiMzY1ZTI2NDU2YzA4YzE2IiwidXNlcl9pZCI6MX0.x-f6jyke5o0MNMgFi-MPmfQlvo4jcV3JMqWtKUd6iho`
 
 apiClient.interceptors.request.use(async function (config) {
   debug(`request:${config.method}:${config.url}`, config)
@@ -133,5 +138,13 @@ export async function makePutRequest<T>(
   config?: AxiosRequestConfig
 ): Promise<T> {
   const response = await apiClient.put<T>(url, data, config)
+  return response.data
+}
+
+export async function makeDeleteRequest<T>(
+  url: string,
+  config?: AxiosRequestConfig
+): Promise<T> {
+  const response = await apiClient.delete<T>(url, config)
   return response.data
 }

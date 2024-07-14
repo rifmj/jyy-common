@@ -32,6 +32,10 @@ export type Car = {
   carId: CarId
 } & CreateCar
 
+export type DeleteCar = {
+  carId: CarId
+}
+
 export type CreateCar = {
   color?: Color
   make: CarMake

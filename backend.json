@@ -1,0 +1,1633 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Juu",
+    "description": "Juu",
+    "contact": {
+      "email": "aidos.kakimzhan@gmail.com"
+    },
+    "license": {
+      "name": "BSD License"
+    },
+    "version": "v1"
+  },
+  "host": "api-dev.juu.kz",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "paths": {
+    "/api/car/": {
+      "get": {
+        "operationId": "api_car_list",
+        "description": "Method to retrieve user cars list.\n:param request: drf Request object\n:param args: args \n:param kwargs: kwargs\n:return: Response object with user cars list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Car"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/car/create/": {
+      "post": {
+        "operationId": "api_car_create_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/car/current-car/": {
+      "get": {
+        "operationId": "api_car_current-car_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Car"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "post": {
+        "operationId": "api_car_current-car_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/car/makes/": {
+      "get": {
+        "operationId": "api_car_makes_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CarMake"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/car/models/": {
+      "get": {
+        "operationId": "api_car_models_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CarModel"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/car/{id}/": {
+      "get": {
+        "operationId": "api_car_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Автомобиль.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/api/car/{id}/delete/": {
+      "delete": {
+        "operationId": "api_car_delete_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Автомобиль.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/api/car/{id}/update/": {
+      "put": {
+        "operationId": "api_car_update_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "patch": {
+        "operationId": "api_car_update_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Автомобиль.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/api/station/": {
+      "get": {
+        "operationId": "api_station_list",
+        "description": "Method to retrieve stations list with filtering input data.\n:param request: drf Request object\n:param args: args\n:param kwargs: kwargs\n:return: Response object with filtered stations",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Station"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/station/box/{id}/": {
+      "get": {
+        "operationId": "api_station_box_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Box"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Бокс.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/api/station/box_types/": {
+      "get": {
+        "operationId": "api_station_box_types_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BoxType"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/station/control/active_wash_orders/{user_id}": {
+      "get": {
+        "operationId": "api_station_control_active_wash_orders_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WashOrder"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/api/station/control/user_wash_orders/{user_id}": {
+      "get": {
+        "operationId": "api_station_control_user_wash_orders_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WashOrder"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/api/station/control/wash_order_start/": {
+      "post": {
+        "operationId": "api_station_control_wash_order_start_create",
+        "description": "View for registering wash orders. If by UID just create and update necessary fields.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/station/control/wash_order_stop/": {
+      "post": {
+        "operationId": "api_station_control_wash_order_stop_create",
+        "description": "View for registering wash orders. If by UID just create and update necessary fields.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/station/review/": {
+      "get": {
+        "operationId": "api_station_review_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Review"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/station/reviews/create/{order_id}/": {
+      "post": {
+        "operationId": "api_station_reviews_create_create",
+        "description": "Создание нового отзыва по order_id",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "required": [
+                "rating"
+              ],
+              "type": "object",
+              "properties": {
+                "rating": {
+                  "description": "Оценка",
+                  "type": "integer",
+                  "example": 5
+                },
+                "comment": {
+                  "description": "Комментарий",
+                  "type": "string",
+                  "example": "Отличная работа!"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Review"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Order not found"
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "order_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/api/station/wash_order/": {
+      "get": {
+        "operationId": "api_station_wash_order_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WashOrder"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/station/wash_order/create/": {
+      "post": {
+        "operationId": "api_station_wash_order_create_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WashOrderCreate"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WashOrderCreate"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/station/wash_order/{id}": {
+      "get": {
+        "operationId": "api_station_wash_order_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Заказ на мойку.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/api/station/wash_order/{id}/": {
+      "put": {
+        "operationId": "api_station_wash_order_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "patch": {
+        "operationId": "api_station_wash_order_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WashOrder"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Заказ на мойку.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/api/station/{id}/": {
+      "get": {
+        "operationId": "api_station_read",
+        "description": "View set to work with stations information.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Station"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Станция.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/user/change-reset-password/{reset_token}": {
+      "post": {
+        "operationId": "user_change-reset-password_create",
+        "description": "Method of user change password.\n:param request: drf Request\n:param args: args\n:param kwargs: kwargs\n:return: Response with related data",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangeResetPassword"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ChangeResetPassword"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "reset_token",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/user/check-otp/": {
+      "get": {
+        "operationId": "user_check-otp_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": []
+    },
+    "/user/register/": {
+      "post": {
+        "operationId": "user_register_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRegister"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserRegister"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": []
+    },
+    "/user/send-otp/": {
+      "post": {
+        "operationId": "user_send-otp_create",
+        "description": "Method of user to send login or registration code(otp).\n:param request: drf Request\n:param args: args\n:param kwargs: kwargs\n:return: Response with related data",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginOTPSendCode"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoginOTPSendCode"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": []
+    },
+    "/user/send-reset-password-code/": {
+      "post": {
+        "operationId": "user_send-reset-password-code_create",
+        "description": "Method of user to send reset password code.\n:param request: drf Request\n:param args: args\n:param kwargs: kwargs\n:return: Response with related data",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendResetPasswordCodeData"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SendResetPasswordCodeData"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": []
+    },
+    "/user/send_confirmation_code/{id}/": {
+      "post": {
+        "operationId": "user_send_confirmation_code_create",
+        "description": "Method to send confirmation code to user.\n:param request: drf Request\n:param args: args\n:param kwargs: kwargs\n:return: Response with related data",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserConfirmationCodeInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserConfirmationCodeInput"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/user/token/": {
+      "post": {
+        "operationId": "user_token_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomTokenObtainPair"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CustomTokenObtainPair"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": []
+    },
+    "/user/token/refresh/": {
+      "post": {
+        "operationId": "user_token_refresh_create",
+        "description": "Takes a refresh type JSON web token and returns an access type JSON web\ntoken if the refresh token is valid.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/JuuTokenRefresh"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/JuuTokenRefresh"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": []
+    },
+    "/user/use-otp/": {
+      "post": {
+        "operationId": "user_use-otp_create",
+        "description": "Method of user to send login or registration code(otp).\n:param request: drf Request\n:param args: args\n:param kwargs: kwargs\n:return: Response with related data",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginOTPUseCode"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoginOTPUseCode"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": []
+    },
+    "/user/use-reset-password-code/": {
+      "post": {
+        "operationId": "user_use-reset-password-code_create",
+        "description": "Method of Reset Password to use code.\n:param request: drf Request\n:param args: args\n:param kwargs: kwargs\n:return: Response with related data",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResetPasswordCodeUse"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ResetPasswordCodeUse"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": []
+    },
+    "/user/use_confirmation_code/{id}/": {
+      "post": {
+        "operationId": "user_use_confirmation_code_create",
+        "description": "Method of user confirmation by code.\n:param request: drf Request\n:param args: args\n:param kwargs: kwargs\n:return: Response with related data",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserConfirmationCodeInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserConfirmationCodeInput"
+            }
+          }
+        },
+        "tags": [
+          "user"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Car": {
+      "required": [
+        "color",
+        "license_plate",
+        "user",
+        "car_make",
+        "car_model"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "color": {
+          "title": "Цвет",
+          "type": "string",
+          "maxLength": 20,
+          "minLength": 1
+        },
+        "year": {
+          "title": "Год",
+          "type": "integer",
+          "maximum": 2024,
+          "minimum": 1900
+        },
+        "license_plate": {
+          "title": "Госномер",
+          "type": "string",
+          "maxLength": 15,
+          "minLength": 1
+        },
+        "user": {
+          "title": "Владелец",
+          "type": "integer"
+        },
+        "car_make": {
+          "title": "Производитель",
+          "type": "integer"
+        },
+        "car_model": {
+          "title": "Модель автомобиля",
+          "type": "integer"
+        },
+        "car_type": {
+          "title": "Тип автомобиля",
+          "type": "integer",
+          "x-nullable": true
+        }
+      }
+    },
+    "CarMake": {
+      "required": [
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Производитель",
+          "type": "string",
+          "maxLength": 50,
+          "minLength": 1
+        }
+      }
+    },
+    "CarModel": {
+      "required": [
+        "name",
+        "make"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Модель автомобиля",
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "make": {
+          "title": "Производитель",
+          "type": "integer"
+        }
+      }
+    },
+    "Station": {
+      "required": [
+        "name",
+        "address",
+        "latitude",
+        "longitude"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Название",
+          "type": "string",
+          "maxLength": 256,
+          "minLength": 1
+        },
+        "address": {
+          "title": "Адрес",
+          "type": "string",
+          "maxLength": 256,
+          "minLength": 1
+        },
+        "total_box_count": {
+          "title": "Общее количество боксов",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "x-nullable": true
+        },
+        "latitude": {
+          "title": "Широта",
+          "type": "number"
+        },
+        "longitude": {
+          "title": "Долгота",
+          "type": "number"
+        },
+        "description": {
+          "title": "Описание",
+          "type": "string",
+          "x-nullable": true
+        },
+        "boxs": {
+          "title": "Boxs",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Service": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Название",
+          "type": "string",
+          "maxLength": 128,
+          "x-nullable": true
+        },
+        "cost": {
+          "title": "Стоимость, тенге",
+          "type": "string",
+          "format": "decimal"
+        }
+      }
+    },
+    "BoxType": {
+      "required": [
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Название",
+          "type": "string",
+          "maxLength": 64,
+          "minLength": 1
+        },
+        "box_image": {
+          "title": "Изображение бокса",
+          "type": "string",
+          "readOnly": true,
+          "format": "uri"
+        }
+      }
+    },
+    "Box": {
+      "required": [
+        "service",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "service": {
+          "$ref": "#/definitions/Service"
+        },
+        "type": {
+          "$ref": "#/definitions/BoxType"
+        },
+        "name": {
+          "title": "Название",
+          "type": "string",
+          "x-nullable": true
+        },
+        "description": {
+          "title": "Описание",
+          "type": "string",
+          "x-nullable": true
+        },
+        "status": {
+          "title": "Статус",
+          "type": "string",
+          "enum": [
+            "Доступен",
+            "Делаются приготовления",
+            "Моется",
+            "Завершается",
+            "Недоработка"
+          ],
+          "x-nullable": true
+        },
+        "percent": {
+          "title": "Percent",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "WashOrder": {
+      "required": [
+        "box"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Service"
+          },
+          "readOnly": true
+        },
+        "status": {
+          "title": "Статус",
+          "type": "string",
+          "enum": [
+            "СОЗДАН",
+            "ЗАВЕРШЕН",
+            "ОТМЕНЕН",
+            "НАЧАТ"
+          ]
+        },
+        "created_date": {
+          "title": "Дата создания",
+          "type": "string",
+          "format": "date-time"
+        },
+        "canceled_date": {
+          "title": "Дата отмены",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "completed_date": {
+          "title": "Дата завершения",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "start_date": {
+          "title": "Дата начала",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "finish_date": {
+          "title": "Дата окончания",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "discount_amount": {
+          "title": "Сумма скидки",
+          "type": "string",
+          "format": "decimal",
+          "x-nullable": true
+        },
+        "discount_percent": {
+          "title": "Процент",
+          "type": "string",
+          "format": "decimal",
+          "x-nullable": true
+        },
+        "box": {
+          "title": "Бокс",
+          "type": "integer"
+        },
+        "station": {
+          "title": "Station",
+          "type": "string",
+          "readOnly": true
+        },
+        "customer": {
+          "title": "Клиент",
+          "type": "integer",
+          "x-nullable": true
+        },
+        "total_price": {
+          "title": "Total price",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Review": {
+      "required": [
+        "order",
+        "rating",
+        "date"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "order": {
+          "title": "Заказ",
+          "type": "integer"
+        },
+        "rating": {
+          "title": "Рейтинг",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "comment": {
+          "title": "Комментарий",
+          "type": "string",
+          "x-nullable": true
+        },
+        "date": {
+          "title": "Дата",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "WashOrderCreate": {
+      "required": [
+        "services",
+        "box"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "start_date": {
+          "title": "Дата начала",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "box": {
+          "title": "Бокс",
+          "type": "integer"
+        },
+        "customer": {
+          "title": "Клиент",
+          "type": "integer",
+          "x-nullable": true
+        }
+      }
+    },
+    "ChangeResetPassword": {
+      "required": [
+        "password",
+        "password2"
+      ],
+      "type": "object",
+      "properties": {
+        "password": {
+          "title": "Password",
+          "type": "string",
+          "minLength": 1
+        },
+        "password2": {
+          "title": "Password2",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "UserRegister": {
+      "required": [
+        "password",
+        "password2",
+        "auth_type"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "phone_number": {
+          "title": "Phone number",
+          "type": "string",
+          "minLength": 1
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email",
+          "minLength": 1
+        },
+        "password": {
+          "title": "Пароль",
+          "type": "string",
+          "maxLength": 128,
+          "minLength": 1
+        },
+        "password2": {
+          "title": "Password2",
+          "type": "string",
+          "minLength": 1
+        },
+        "auth_type": {
+          "title": "Auth type",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "LoginOTPSendCode": {
+      "required": [
+        "auth_type"
+      ],
+      "type": "object",
+      "properties": {
+        "auth_type": {
+          "title": "Auth type",
+          "type": "string",
+          "minLength": 1
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email",
+          "minLength": 1
+        },
+        "phone_number": {
+          "title": "Phone number",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "SendResetPasswordCodeData": {
+      "required": [
+        "phone_number_or_email"
+      ],
+      "type": "object",
+      "properties": {
+        "phone_number_or_email": {
+          "title": "Phone number or email",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "UserConfirmationCodeInput": {
+      "required": [
+        "code"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string",
+          "pattern": "^[0-9]{5}$",
+          "maxLength": 5,
+          "minLength": 5
+        }
+      }
+    },
+    "CustomTokenObtainPair": {
+      "required": [
+        "auth_type",
+        "password"
+      ],
+      "type": "object",
+      "properties": {
+        "auth_type": {
+          "title": "Auth type",
+          "type": "string",
+          "minLength": 1
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email",
+          "minLength": 1
+        },
+        "phone_number": {
+          "title": "Phone number",
+          "type": "string",
+          "minLength": 1
+        },
+        "password": {
+          "title": "Password",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "JuuTokenRefresh": {
+      "required": [
+        "refresh"
+      ],
+      "type": "object",
+      "properties": {
+        "refresh": {
+          "title": "Refresh",
+          "type": "string",
+          "minLength": 1
+        },
+        "access": {
+          "title": "Access",
+          "type": "string",
+          "readOnly": true,
+          "minLength": 1
+        }
+      }
+    },
+    "LoginOTPUseCode": {
+      "required": [
+        "code"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string",
+          "pattern": "^[0-9]{5}$",
+          "maxLength": 5,
+          "minLength": 5
+        }
+      }
+    },
+    "ResetPasswordCodeUse": {
+      "required": [
+        "code"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string",
+          "pattern": "^[0-9]{5}$",
+          "maxLength": 5,
+          "minLength": 5
+        }
+      }
+    }
+  }
+}

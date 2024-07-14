@@ -1,6 +1,7 @@
 import { type Fetcher } from "swr"
 
 import {
+  makeDeleteRequest,
   makeGetRequest,
   makePostRequest,
   makePutRequest,
@@ -20,26 +21,13 @@ import {
   type CreateCar,
   type UpdateCar,
 } from "../../types/car/car"
-import { CAR_MAKE_MOCKS, CAR_MAKE_MODELS } from "./mocks"
 
 export const fetchCarMakeList: Fetcher<CarMake[]> = () => {
-  if (process.env.NODE_ENV === "development") {
-    return CAR_MAKE_MOCKS.map(value => ({
-      carMakeId: value.carMakeId as CarMakeId,
-      label: value.label as CarMakeLabel,
-    }))
-  }
-  return makeGetRequest<CarMake[]>("/car-makes")
+  return makeGetRequest<CarMake[]>("/api/car/makes")
 }
 
 export const fetchCarModelList: Fetcher<CarModel[]> = () => {
-  if (process.env.NODE_ENV === "development") {
-    return CAR_MAKE_MODELS.map(value => ({
-      carModelId: value.id as CarModelId,
-      label: value.label as CarModelLabel,
-    }))
-  }
-  return makeGetRequest<CarModel[]>("/car-models")
+  return makeGetRequest<CarModel[]>("/api/car/models")
 }
 
 export const fetchCarList: Fetcher<Car[]> = () => {
@@ -69,13 +57,24 @@ export const fetchCarList: Fetcher<Car[]> = () => {
       },
     ]
   }
-  return makeGetRequest<Car[]>("/cars")
+  return makeGetRequest<Car[]>("/api/car/")
+}
+
+export const fetchCar: (id: CarId) => Promise<Car> = (id: CarId) => {
+  return makeGetRequest<Car>(`/api/car/${id}/`)
+}
+
+export const fetchCurrentCar: Fetcher<Car> = () => {
+  return makeGetRequest<Car>(`/api/car/current-car/`)
 }
 
 export const createCarFetcher: Fetcher<Car, CreateCar> = car =>
-  makePostRequest<Car>("/cars", car)
+  makePostRequest<Car>("/api/car/create/", car)
 
 export const updateCarFetcher: Fetcher<
   Car,
   { carId: CarId; car: UpdateCar }
 > = ({ carId, car }) => makePutRequest<Car>(`/cars/${carId}`, car)
+
+export const deleteCarFetcher: Fetcher<Car, { carId: CarId }> = ({ carId }) =>
+  makeDeleteRequest<Car>(`/api/car/${carId}/`)

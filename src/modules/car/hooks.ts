@@ -1,4 +1,4 @@
-import useSWR from "swr"
+import useSWR, { type SWRResponse } from "swr"
 import useSWRMutation from "swr/mutation"
 
 import {
@@ -7,18 +7,20 @@ import {
   type CarMake,
   type CarModel,
   type CreateCar,
+  type DeleteCar,
   type UpdateCar,
-} from "../../types/car/car"
-import {
   type UseCarList,
   type UseCarMakeList,
   type UseCarModelList,
   type UseCreateCar,
+  type UseDeleteCar,
   type UseUpdateCar,
-} from "../../types/car/hooks"
-import { Keys } from "../../types/car/keys"
+} from "../../types/car"
+import { GetCarById, Keys } from "../../types/car/keys"
 import {
   createCarFetcher,
+  deleteCarFetcher,
+  fetchCar,
   fetchCarList,
   fetchCarMakeList,
   fetchCarModelList,
@@ -37,6 +39,12 @@ export const useCarList: UseCarList = () => {
   return useSWR<Car[]>(Keys.CarList, fetchCarList)
 }
 
+export const useCar: (carId: CarId) => SWRResponse<Car, any> = (
+  carId: CarId
+) => {
+  return useSWR<Car>(GetCarById(carId), () => fetchCar(carId))
+}
+
 export const useCreateCar: UseCreateCar = () => {
   return useSWRMutation<Car, any, Keys, CreateCar>(
     Keys.CreateCar,
@@ -49,6 +57,14 @@ export const useUpdateCar: UseUpdateCar = () => {
     updateCarFetcher({
       carId: key as CarId,
       car: arg.arg,
+    })
+  )
+}
+
+export const useDeleteCar: UseDeleteCar = () => {
+  return useSWRMutation<Car, any, Keys, DeleteCar>(Keys.DeleteCar, (key, arg) =>
+    deleteCarFetcher({
+      carId: key as CarId,
     })
   )
 }

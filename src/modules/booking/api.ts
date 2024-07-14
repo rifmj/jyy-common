@@ -29,13 +29,10 @@ export const fetchBookingStatus = async (
 export const fetchUserBookingList = async (
   washId?: string
 ): Promise<GetUserBookingListMethod> => {
-  if (process.env.NODE_ENV === "development")
-    return {
-      totalCount: bookingHistory.length as PaginationTotalCount,
-      limit: 20 as PaginationLimit,
-      offset: 0 as PaginationOffset,
-      items: bookingHistory,
-    }
-  const url = washId ? `/bookings?carWashId=${washId}` : "/bookings"
-  return makeGetRequest<GetUserBookingListMethod>(url)
+  return {
+    totalCount: bookingHistory.length as PaginationTotalCount,
+    limit: 20 as PaginationLimit,
+    offset: 0 as PaginationOffset,
+    items: bookingHistory,
+  }
 }
