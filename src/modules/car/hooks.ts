@@ -42,7 +42,7 @@ export const useCarList: UseCarList = () => {
 }
 
 export const useCurrentCar: UseCurrentCar = () => {
-  return useSWR<Car>(Keys.CurrentCar, fetchCurrentCar)
+  return useSWR<Car | null>(Keys.CurrentCar, fetchCurrentCar)
 }
 
 export const useCar: (carId: CarId) => SWRResponse<Car, any> = (
