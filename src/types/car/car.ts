@@ -24,6 +24,7 @@ export type CarMake = {
 }
 
 export type CarModel = {
+  carMakeId: CarMakeId
   carModelId: CarModelId
   label: CarModelLabel
 }

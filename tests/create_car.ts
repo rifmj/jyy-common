@@ -18,10 +18,12 @@ async function main() {
     const userCarsList = await fetchCarList()
 
     // not working
-    // const carById = await fetchCar(1)
-    // const currentCar = await fetchCurrentCar()
+    const carById = await fetchCar(1)
+    const currentCar = await fetchCurrentCar()
 
-    const t = await makeGetRequest<Car>(`/api/station/box/1/`)
+    const t = await makeGetRequest<Car>(
+      `/api/station/control/my_wash_order_history/?limit=100&offset=0`
+    )
 
     debugger
   } catch (e) {

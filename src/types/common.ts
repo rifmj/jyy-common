@@ -51,7 +51,7 @@ export type TimeIntervalEnd = Tagged<TimeInterval, "TimeIntervalEnd">
  * Используется для уникальной идентификации города.
  * @example "city123"
  */
-export type CityId = Tagged<string, "CityId">
+export type CityId = Tagged<number, "CityId">
 
 /**
  * Тип, представляющий цвет.

@@ -10,54 +10,50 @@ import { type Color } from "../../types"
 import {
   type Car,
   type CarId,
-  type CarLicensePlate,
   type CarMake,
   type CarMakeId,
   type CarMakeLabel,
   type CarModel,
   type CarModelId,
   type CarModelLabel,
-  type CarYear,
   type CreateCar,
   type UpdateCar,
-} from "../../types/car/car"
+} from "../../types/car"
 
-export const fetchCarMakeList: Fetcher<CarMake[]> = () => {
-  return makeGetRequest<CarMake[]>("/api/car/makes")
+export const fetchCarMakeList: Fetcher<CarMake[]> = async () => {
+  const data = await makeGetRequest<any[]>("/api/car/makes/")
+  return data.map(value => ({
+    carMakeId: value.id,
+    label: value.name,
+  }))
 }
 
-export const fetchCarModelList: Fetcher<CarModel[]> = () => {
-  return makeGetRequest<CarModel[]>("/api/car/models")
+export const fetchCarModelList: Fetcher<CarModel[]> = async () => {
+  const data = await makeGetRequest<any[]>("/api/car/models/")
+  return data.map(value => ({
+    carMakeId: value.make,
+    carModelId: value.id,
+    label: value.name,
+  }))
 }
 
-export const fetchCarList: Fetcher<Car[]> = () => {
-  if (process.env.NODE_ENV === "development") {
-    return [
-      {
-        carId: "124" as CarId,
-        make: { carMakeId: 1 as CarMakeId, label: "Toyota" as CarMakeLabel },
-        model: {
-          carModelId: 2 as CarModelId,
-          label: "Land Cruiser 200" as CarModelLabel,
-        },
-        licensePlate: "L 001 AP" as CarLicensePlate,
-        year: "2014" as CarYear,
-        color: "#ff00ff" as Color,
-      },
-      {
-        carId: "126" as CarId,
-        make: { carMakeId: 1 as CarMakeId, label: "Mersedes" as CarMakeLabel },
-        model: {
-          carModelId: 2 as CarModelId,
-          label: "CLS" as CarModelLabel,
-        },
-        licensePlate: "001 AP 01" as CarLicensePlate,
-        year: "2021" as CarYear,
-        color: "#ff0000" as Color,
-      },
-    ]
-  }
-  return makeGetRequest<Car[]>("/api/car/")
+export const fetchCarList: Fetcher<Car[]> = async () => {
+  const request = await makeGetRequest<any[]>("/api/car/")
+  return request.map(value => ({
+    carId: value.id,
+    licensePlate: value.license_plate,
+    year: value.year,
+    color: "#ff00ff" as Color,
+    make: {
+      carMakeId: value.car_make as CarMakeId,
+      label: "Toyota" as CarMakeLabel,
+    },
+    model: {
+      carMakeId: value.car_make as CarMakeId,
+      carModelId: value.car_model as CarModelId,
+      label: "Land Cruiser 200" as CarModelLabel,
+    },
+  }))
 }
 
 export const fetchCar: (id: CarId) => Promise<Car> = (id: CarId) => {

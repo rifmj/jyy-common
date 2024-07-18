@@ -1,17 +1,32 @@
 import { type Fetcher } from "swr"
 
 import { makeGetRequest } from "../../api-client"
-import { type LimitOffsetPaginationResponse } from "../../types"
 import {
+  type CarWash,
+  CarWashAvailabilityStatus,
+  type CarWashDetails,
+  type CarWashId,
   type GetCarWashAvailabilitySlotListMethod,
   type GetCarWashAvailabilitySlotListMethodParams,
 } from "../../types/carWash"
-import { type CarWash, type CarWashId } from "../../types/carWash"
-import { type CarWashDetails } from "../../types/carWash"
 
-export const washListFetcher: Fetcher<
-  LimitOffsetPaginationResponse<CarWash>
-> = () => makeGetRequest<LimitOffsetPaginationResponse<CarWash>>(`/car-wash`)
+export const washListFetcher: Fetcher<CarWash[]> = async () => {
+  const request = await makeGetRequest<any>(`/api/station/`)
+  const data: CarWash[] = request.map(value => ({
+    street: value.address,
+    address: {
+      city: "Астана",
+      address: value.address,
+      street: value.address,
+      house: "24",
+    },
+    carWashId: value.id as CarWashId,
+    location: { latitude: value.latitude, longitude: value.longitude },
+    name: value.name,
+    availability: CarWashAvailabilityStatus.Available,
+  }))
+  return data
+}
 
 export const carWashDetailsFetcher: Fetcher<
   CarWashDetails,

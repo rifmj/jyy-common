@@ -4,7 +4,7 @@ import { type Address, type Location } from "../address/location"
 import { type CityId } from "../common"
 import { type CarWashAvailabilityStatus } from "./availability"
 
-export type CarWashId = Tagged<string, "CarWashId">
+export type CarWashId = Tagged<number, "CarWashId">
 
 export type CarWash = {
   address: Address
