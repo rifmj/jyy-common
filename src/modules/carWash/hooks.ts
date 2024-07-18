@@ -4,7 +4,7 @@ import {
   type UseCarWash,
   type UseCarWashAvailabilitySlotList,
   type UseCarWashList,
-} from "../../types/carWash/hooks"
+} from "../../types/carWash"
 import { Keys } from "../../types/carWash/keys"
 import {
   carWashAvailabilitySlotListFetcher,

@@ -5,6 +5,7 @@ export enum Keys {
   CarMakeList = "CarMakeList",
   CarModelList = "CarModelList",
   CreateCar = "CreateCar",
+  CurrentCar = "CurrentCar",
   DeleteCar = "DeleteCar",
   UpdateCar = "UpdateCar",
 }

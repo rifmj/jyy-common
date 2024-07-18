@@ -10,13 +10,13 @@ export type CarModelId = Tagged<number, "CarModelId">
 
 export type CarModelLabel = Tagged<string, "CarModelLabel">
 
-export type CarId = Tagged<string, "CarId">
+export type CarId = Tagged<number, "CarId">
 
 export type CarVIN = Tagged<string, "CarVIN">
 
 export type CarLicensePlate = Tagged<string, "CarLicensePlate">
 
-export type CarYear = Tagged<string, "CarYear">
+export type CarYear = Tagged<number, "CarYear">
 
 export type CarMake = {
   carMakeId: CarMakeId

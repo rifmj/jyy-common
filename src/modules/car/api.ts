@@ -10,12 +10,14 @@ import { type Color } from "../../types"
 import {
   type Car,
   type CarId,
+  type CarLicensePlate,
   type CarMake,
   type CarMakeId,
   type CarMakeLabel,
   type CarModel,
   type CarModelId,
   type CarModelLabel,
+  type CarYear,
   type CreateCar,
   type UpdateCar,
 } from "../../types/car"
@@ -60,8 +62,31 @@ export const fetchCar: (id: CarId) => Promise<Car> = (id: CarId) => {
   return makeGetRequest<Car>(`/api/car/${id}/`)
 }
 
-export const fetchCurrentCar: Fetcher<Car> = () => {
-  return makeGetRequest<Car>(`/api/car/current-car/`)
+export const fetchCurrentCar: () => Promise<Car> = async () => {
+  const car = await makeGetRequest<{
+    id: number
+    color: string
+    year: number
+    license_place: string
+    car_make: number
+    car_model: number
+    car_type: number
+  }>(`/api/car/current-car/`)
+  return {
+    carId: car.id as CarId,
+    make: {
+      carMakeId: car.car_make as CarMakeId,
+      label: "" as CarMakeLabel,
+    },
+    model: {
+      carModelId: car.car_model as CarModelId,
+      carMakeId: car.car_make as CarMakeId,
+      label: "" as CarModelLabel,
+    },
+    licensePlate: car.license_place as CarLicensePlate,
+    year: car.year as CarYear,
+    color: car.color as Color,
+  }
 }
 
 export const createCarFetcher: Fetcher<Car, CreateCar> = car =>
