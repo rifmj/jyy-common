@@ -1,16 +1,17 @@
 import { makeGetRequest, makePostRequest } from "../../api-client"
 import {
+  type PaginationLimit,
+  type PaginationOffset,
+  type PaginationTotalCount,
+} from "../../types"
+import {
   type BookCarWashMethod,
   type BookCarWashMethodParams,
   type CarWashBookingStatusMethodResponse,
   type GetUserBookingListMethod,
 } from "../../types/booking"
-import {
-  type PaginationLimit,
-  type PaginationOffset,
-  type PaginationTotalCount,
-} from "../../types/common"
-import { bookingHistory } from "./mocks"
+import { type CarWashId } from "../../types/carWash"
+import { convertDataToBookings } from "./utils"
 
 export const sendBookingRequest = async (
   params: BookCarWashMethodParams
@@ -27,12 +28,16 @@ export const fetchBookingStatus = async (
 }
 
 export const fetchUserBookingList = async (
-  washId?: string
+  washId?: CarWashId
 ): Promise<GetUserBookingListMethod> => {
+  const request = await makeGetRequest<any>(
+    `/api/station/control/my_wash_order_history/?limit=100&offset=0`
+  )
+
   return {
-    totalCount: bookingHistory.length as PaginationTotalCount,
+    totalCount: request.length as PaginationTotalCount,
     limit: 20 as PaginationLimit,
     offset: 0 as PaginationOffset,
-    items: bookingHistory,
+    items: convertDataToBookings(request),
   }
 }

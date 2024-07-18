@@ -101,9 +101,13 @@ export interface Booking {
   price: number
 
   /**
-   * Список идентификаторов услуг мойки автомобиля.
+   * Список услуг мойки автомобиля.
    */
-  services: CarWashServiceId[]
+  services: {
+    id: CarWashServiceId
+    name: string
+    cost: number
+  }[]
 
   /**
    * Идентификатор временного слота для мойки автомобиля.
