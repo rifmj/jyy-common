@@ -3,6 +3,7 @@ import { type SWRMutationResponse } from "swr/mutation"
 
 import {
   type Car,
+  type CarId,
   type CarMake,
   type CarModel,
   type DeleteCar,
@@ -19,6 +20,13 @@ export type UseCarList = () => SWRResponse<Car[]>
 export type UseCurrentCar = () => SWRResponse<Car>
 
 export type UseCreateCar = () => SWRMutationResponse<Car>
+
+export type UseUpdateCurrentCar = () => SWRMutationResponse<
+  null,
+  any,
+  Keys,
+  { carId: CarId }
+>
 
 export type UseUpdateCar = () => SWRMutationResponse<Car, any, Keys, UpdateCar>
 

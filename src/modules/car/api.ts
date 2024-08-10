@@ -56,5 +56,11 @@ export const updateCarFetcher: Fetcher<
   { carId: CarId; car: UpdateCar }
 > = ({ carId, car }) => makePutRequest<Car>(`/cars/${carId}`, car)
 
+export const updateCurrentCarFetcher: Fetcher<any, { carId: CarId }> = ({
+  carId,
+}) => {
+  return makePostRequest<any>(`/api/car/current-car/`, { car_id: carId })
+}
+
 export const deleteCarFetcher: Fetcher<Car, { carId: CarId }> = ({ carId }) =>
   makeDeleteRequest<Car>(`/api/car/${carId}/`)

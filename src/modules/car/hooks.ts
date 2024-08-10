@@ -16,6 +16,7 @@ import {
   type UseCurrentCar,
   type UseDeleteCar,
   type UseUpdateCar,
+  type UseUpdateCurrentCar,
 } from "../../types/car"
 import { GetCarById, Keys } from "../../types/car/keys"
 import {
@@ -27,6 +28,7 @@ import {
   fetchCarModelList,
   fetchCurrentCar,
   updateCarFetcher,
+  updateCurrentCarFetcher,
 } from "./api"
 
 export const useCarMakeList: UseCarMakeList = () => {
@@ -43,6 +45,19 @@ export const useCarList: UseCarList = () => {
 
 export const useCurrentCar: UseCurrentCar = () => {
   return useSWR<Car | null>(Keys.CurrentCar, fetchCurrentCar)
+}
+
+export const useUpdateCurrentCar: UseUpdateCurrentCar = () => {
+  return useSWRMutation<
+    null,
+    any,
+    Keys,
+    {
+      carId: CarId
+    }
+  >(Keys.UpdateCurrentCar, (arg, extraArg) =>
+    updateCurrentCarFetcher(extraArg.arg)
+  )
 }
 
 export const useCar: (carId: CarId) => SWRResponse<Car, any> = (

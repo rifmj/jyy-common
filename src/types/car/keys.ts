@@ -8,6 +8,7 @@ export enum Keys {
   CurrentCar = "CurrentCar",
   DeleteCar = "DeleteCar",
   UpdateCar = "UpdateCar",
+  UpdateCurrentCar = "UpdateCurrentCar",
 }
 
 export const GetCarById = (id: CarId) => `Cars/${id}`
