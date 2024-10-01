@@ -1,6 +1,6 @@
 {
   "name": "@juu/common",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "./src/index.ts",
   "license": "MIT",
   "type": "module",
