@@ -18,7 +18,7 @@ export type UseCarWashAvailabilitySlotList = (
 
 export type UseCarWashList = (
   params: GetCarWashListMethodParams
-) => SWRResponse<CarWash[]>
+) => SWRResponse<LimitOffsetPaginationResponse<CarWash>>
 
 /**
  * Получить детали и список сервисов

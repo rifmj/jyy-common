@@ -10,13 +10,13 @@ export type CarModelId = Tagged<number, "CarModelId">
 
 export type CarModelLabel = Tagged<string, "CarModelLabel">
 
-export type CarId = Tagged<number, "CarId">
+export type CarId = Tagged<string, "CarId">
 
 export type CarVIN = Tagged<string, "CarVIN">
 
 export type CarLicensePlate = Tagged<string, "CarLicensePlate">
 
-export type CarYear = Tagged<number, "CarYear">
+export type CarYear = Tagged<string, "CarYear">
 
 export type CarMake = {
   carMakeId: CarMakeId
@@ -24,7 +24,6 @@ export type CarMake = {
 }
 
 export type CarModel = {
-  carMakeId: CarMakeId
   carModelId: CarModelId
   label: CarModelLabel
 }
@@ -32,10 +31,6 @@ export type CarModel = {
 export type Car = {
   carId: CarId
 } & CreateCar
-
-export type DeleteCar = {
-  carId: CarId
-}
 
 export type CreateCar = {
   color?: Color
